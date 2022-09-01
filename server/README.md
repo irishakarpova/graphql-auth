@@ -1,4 +1,4 @@
-Building GraphQL APIs with TypeGraphQL and TypeORM
+# Building GraphQL APIs with TypeGraphQL and TypeORM
 
 What Libraries do I use:
 
@@ -18,7 +18,10 @@ What Libraries do I use:
 ###Install TypeORM globally:
 npm install typeorm -g
 
-###Inside the directory where we want to create project run the following TypeORM command:
+### Inside the directory where we want to create project run the following TypeORM command:
+
 typeorm init --name apollo-server-boilerplate --database postgres
 
-###To Run Server: npm run start
+### To Run Server:
+
+npm run start
