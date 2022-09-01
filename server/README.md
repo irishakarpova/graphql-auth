@@ -15,10 +15,11 @@
 - bcryptjs  
   this library enables storing of passwords as hashed passwords
 
-  #### Steps to Run Backend:
+#### Steps to Run Backend:
 
-- Install TypeORM globally: npm install typeorm -g
+- Install TypeORM globally: **npm install typeorm -g**
 
-- Inside the directory where we want to create project run the following TypeORM command: typeorm init --name apollo-server-boilerplate --database postgres
+- Inside the directory where we want to create project run the following TypeORM command:
+  **typeorm init --name apollo-server-boilerplate --database postgres**
 
-- To Run Server: npm run start
+- To Run Server: **npm run start**

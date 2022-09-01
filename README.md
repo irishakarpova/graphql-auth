@@ -1,4 +1,6 @@
-Steps to run this project:
+# GraphQL Authorization
+
+#### Steps to run this project:
 
 1. Create DataBase
 
@@ -13,7 +15,7 @@ Steps to run this project:
   REFRESH_TOKEN_SECRET=refreshsecret
 - Run server with npm run start
 
-3. To run the front-end Move the directory react-webpack
+3. To run the front-end move the directory react-webpack
 
 - Install dependencies by running an npm install command.
 - Create .env file with 2 variables:
