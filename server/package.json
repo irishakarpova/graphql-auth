@@ -1,7 +1,7 @@
 {
-  "name": "atest-orm",
+  "name": "graphql-orm",
   "version": "0.0.1",
-  "description": "Awesome project developed with TypeORM.",
+  "description": "Project developed with TypeORM.",
   "type": "commonjs",
   "devDependencies": {
     "@graphql-codegen/cli": "^2.11.2",
