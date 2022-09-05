@@ -1,3 +1,6 @@
 Steps:
 
-1. install webpack, webpack-cli
+1. Install webpack, webpack-cli, html-webpack-plugin;
+2. Add Typescript using Babel;
+3. Add React and source map;
+4. Add additianal libraries;
