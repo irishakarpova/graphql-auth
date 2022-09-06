@@ -1,27 +1,46 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
-    "lib": ["dom", "es6", "es2017", "esnext.asynciterable"],
-    "sourceMap": true,
-    "outDir": "./dist",
-    "moduleResolution": "node",
-    "removeComments": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "noImplicitThis": true,
-    "noUnusedLocals": true,
+    "lib": ["es6", "dom", "dom.iterable", "esnext"],
+    "target": "esnext",
+    "module": "es6",
+    "importHelpers": true,
+    "declaration": true,
+    "rootDir": "src",
+    // "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
     "noFallthroughCasesInSwitch": true,
+    "allowJs": false,
+    "noEmit": true,
+    "jsx": "react",
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "baseUrl": "./src",
+    "paths": {
+      "~*": ["./*"],
+      "@common/*": ["./common/*"]
+    },
+    "forceConsistentCasingInFileNames": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
+    "skipLibCheck": true,
     "resolveJsonModule": true,
-    "baseUrl": "."
+    "isolatedModules": true
   },
-  "exclude": ["node_modules"],
-  "include": ["./src/**/*.tsx", "./src/**/*.ts"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/index.js",
+    "src/index.tsx",
+    "src/AppRoutes.tsx",
+    "src/AccessToken.ts"
+  ],
+  "exclude": ["node_modules", "dist"],
+  "typeRoots": ["./node_modules/@types"]
 }

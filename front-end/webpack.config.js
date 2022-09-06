@@ -1,14 +1,22 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 
 module.exports = {
   entry: './src/index.tsx',
   devtool: 'eval-source-map',
+  // externals: ['fs'],
   resolve: {
+    // fallback: {
+    //   net: false,
+    //   async_hooks: false,
+    // },
     extensions: ['.js', '.ts', '.tsx'],
     alias: {
       process: 'process/browser',
     },
   },
+
   devServer: {
     historyApiFallback: true,
   },
@@ -21,10 +29,13 @@ module.exports = {
       },
     ],
   },
+
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: 'index.html',
     }),
+    new Dotenv(),
+    new NodePolyfillPlugin(),
   ],
 };
