@@ -1,23 +1,22 @@
-# GraphQL Authorization
+# GraphQL JWT Authorization
 
 #### Steps to run this project:
 
 1. Create DataBase
 
-- Create PostgreSQL database: "ultratest"
-- Add table for database with fields: username: "admin", password: "admin",
+- In this case i did use a PostgreSQL database with a name "ultratest" and fields: username: "admin", password: "admin",
 
-2. Move the folder server and make a backend server available:
+2. To run backend server move the directory:
 
-- Install dependencies by running an npm install command.
+- Install dependencies by running npm install command.
 - Create .env file with 2 variables:
   ACCESS_TOKEN_SECRET=accesssecret
   REFRESH_TOKEN_SECRET=refreshsecret
-- Run server with npm run start
+- Run npm run start
 
 3. To run the front-end move the directory react-webpack
 
-- Install dependencies by running an npm install command.
+- Install dependencies by running npm install command.
 - Create .env file with 2 variables:
   GRAPHQL_QUERY = http://localhost:4000/graphql
   REFRESH_TOKEN = http://localhost:4000/refresh
