@@ -1,3 +1,6 @@
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { setAccessToken } from '../AccessToken';
@@ -16,21 +19,17 @@ export const Header: React.FC<Props> = () => {
   } else if (data && data.me) {
     body = <div>you are logged in as: {data.me.email}</div>;
   } else {
-    body = <div>not logged in</div>;
+    body = (
+      <Container maxWidth="sm">
+        <Box pt="20px">
+          <Typography variant="h5">log in please</Typography>
+        </Box>
+      </Container>
+    );
   }
 
   return (
     <header>
-      <div>
-        <Link to="/">home</Link>
-      </div>
-      <div>
-        <Link to="/register">register</Link>
-      </div>
-      <div>
-        <Link to="/login">login</Link>
-      </div>
-
       {body}
       <div>
         {!loading && data && data.me ? (

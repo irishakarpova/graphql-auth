@@ -6,6 +6,9 @@ import { Formik, Form, Field } from 'formik';
 import Button from '@mui/material/Button';
 import { TextField } from 'formik-mui';
 import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
 
 export const Login = () => {
   const [data, { error }] = useLoginMutation();
@@ -17,59 +20,86 @@ export const Login = () => {
   let navigate = useNavigate();
 
   return (
-    <Formik
-      initialValues={{ email: '', password: '' }}
-      onSubmit={async (values, { setSubmitting }) => {
-        const response = await data({
-          variables: {
-            email: values.email,
-            password: values.password,
-          },
+    <Container maxWidth="sm">
+      <Box pt="20px" pb="20px">
+        <Typography variant="h5">Sign In</Typography>
+      </Box>
 
-          update: (store, { data }) => {
-            if (data) {
-              store.writeQuery<MeQuery>({
-                query: MeDocument,
-                data: {
-                  me: data.login.user,
+      <Formik
+        initialValues={{ email: '', password: '' }}
+        onSubmit={async (values, { setSubmitting }) => {
+          const response = await data({
+            variables: {
+              email: values.email,
+              password: values.password,
+            },
+
+            update: (store, { data }) => {
+              if (data) {
+                store.writeQuery<MeQuery>({
+                  query: MeDocument,
+                  data: {
+                    me: data.login.user,
+                  },
+                });
+              }
+            },
+          });
+
+          if (response && response.data) {
+            setAccessToken(response.data.login.accessToken.toString());
+          }
+          navigate('/');
+          setSubmitting(false);
+        }}
+      >
+        {({ isSubmitting }) => (
+          <Form>
+            <Box
+              sx={{
+                '& .MuiTextField-root': {
+                  display: 'flex',
+                  mb: '10px',
                 },
-              });
-            }
-          },
-        });
-
-        if (response && response.data) {
-          setAccessToken(response.data.login.accessToken.toString());
-        }
-        navigate('/');
-        setSubmitting(false);
-      }}
-    >
-      {({ isSubmitting }) => (
-        <Form>
-          <Box
-            sx={{
-              '& .MuiTextField-root': {
-                display: 'flex',
-                mb: '10px',
-                width: '50ch',
-              },
-            }}
-          >
-            <Field component={TextField} type="email" name="email" />
-            <Field component={TextField} type="password" name="password" />
-
-            <Button
-              disabled={isSubmitting}
-              color="primary"
-              variant="contained"
-              type="submit"
+              }}
             >
-              Submit
-            </Button>
-          </Box>
-        </Form>
-      )}
-    </Formik>
+              <Field
+                component={TextField}
+                type="email"
+                name="email"
+                label="Email Address"
+              />
+              <Field
+                component={TextField}
+                type="password"
+                name="password"
+                label="Password"
+              />
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  mt: '20px',
+                }}
+              >
+                <Button
+                  disabled={isSubmitting}
+                  color="primary"
+                  variant="contained"
+                  type="submit"
+                >
+                  Sign In
+                </Button>
+                <Link sx={{ pl: '20px' }} href="/register">
+                  Don't have an account? Sign Up
+                </Link>
+              </Box>
+            </Box>
+          </Form>
+        )}
+      </Formik>
+    </Container>
   );
 };
