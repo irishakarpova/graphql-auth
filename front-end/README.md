@@ -1,6 +1,6 @@
-#Setting Up React App with Apollo Client and GraphQL Code Generator.
+# Setting Up React App with Apollo Client and GraphQL Code Generator.
 
-####What Libraries do I use:
+#### What Libraries do I use:
 
 - Webpack (for development server);
 - React;
