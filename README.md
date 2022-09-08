@@ -4,7 +4,8 @@
 
 1. Create DataBase
 
-- In this case i did use a PostgreSQL database with a name "ultratest" and fields: username: "admin", password: "admin",
+- In this case i used a PostgreSQL database with a name "ultratest"
+  and fields: username: "admin", password: "admin",
 
 2. To run backend server move the directory:
 
