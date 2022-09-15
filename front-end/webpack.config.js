@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: './src/index.tsx',
@@ -27,6 +28,13 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
       },
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          { loader: 'css-loader', options: { modules: true } },
+        ],
+      },
     ],
   },
 
@@ -37,5 +45,6 @@ module.exports = {
     }),
     new Dotenv(),
     new NodePolyfillPlugin(),
+    new MiniCssExtractPlugin(),
   ],
 };
