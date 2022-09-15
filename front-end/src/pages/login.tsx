@@ -1,5 +1,9 @@
 import React from 'react';
-import { MeDocument, MeQuery, useLoginMutation } from '../generated/graphql';
+import {
+  LoggedInUserDocument,
+  LoggedInUserQuery,
+  useLoginMutation,
+} from '../generated/graphql';
 import { useNavigate } from 'react-router-dom';
 import { setAccessToken } from '../AccessToken';
 import { Formik, Form, Field } from 'formik';
@@ -11,11 +15,7 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 
 export const Login = () => {
-  const [data, { error }] = useLoginMutation();
-
-  if (error) {
-    return <p>Errors</p>;
-  }
+  const [login] = useLoginMutation();
 
   let navigate = useNavigate();
 
@@ -28,7 +28,7 @@ export const Login = () => {
       <Formik
         initialValues={{ email: '', password: '' }}
         onSubmit={async (values, { setSubmitting }) => {
-          const response = await data({
+          const response = await login({
             variables: {
               email: values.email,
               password: values.password,
@@ -36,8 +36,8 @@ export const Login = () => {
 
             update: (store, { data }) => {
               if (data) {
-                store.writeQuery<MeQuery>({
-                  query: MeDocument,
+                store.writeQuery<LoggedInUserQuery>({
+                  query: LoggedInUserDocument,
                   data: {
                     me: data.login.user,
                   },
@@ -47,9 +47,9 @@ export const Login = () => {
           });
 
           if (response && response.data) {
-            setAccessToken(response.data.login.accessToken.toString());
+            setAccessToken(response.data.login.accessToken);
           }
-          navigate('/');
+          navigate('/home');
           setSubmitting(false);
         }}
       >

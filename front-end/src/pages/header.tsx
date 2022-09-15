@@ -1,49 +1,61 @@
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { setAccessToken } from '../AccessToken';
-import { useLogoutMutation, useMeQuery } from '../generated/graphql';
+import Button from '@mui/material/Button';
+import { useLogoutMutation, useLoggedInUserQuery } from '../generated/graphql';
+import Stack from '@mui/material/Stack';
+import AppBar from '@mui/material/AppBar';
+import { Link } from 'react-router-dom';
+import styles from './header.module.css';
+import LinearProgress from '@mui/material/LinearProgress';
 
-interface Props {}
-
-export const Header: React.FC<Props> = () => {
-  const { data, loading } = useMeQuery();
+export const Header: React.FC = () => {
+  const { data, loading } = useLoggedInUserQuery({
+    fetchPolicy: 'cache-and-network',
+  });
   const [logout, { client }] = useLogoutMutation();
 
-  let body: any = null;
-
-  if (loading) {
-    body = null;
-  } else if (data && data.me) {
-    body = <div>you are logged in as: {data.me.email}</div>;
-  } else {
-    body = (
-      <Container maxWidth="sm">
-        <Box pt="20px">
-          <Typography variant="h5">log in please</Typography>
-        </Box>
-      </Container>
-    );
-  }
+  const handleLogOut = () => {
+    async () => {
+      await logout();
+      localStorage.clear();
+      setAccessToken('');
+      await client!.resetStore();
+    };
+  };
 
   return (
     <header>
-      {body}
-      <div>
-        {!loading && data && data.me ? (
-          <button
-            onClick={async () => {
-              await logout();
-              localStorage.clear();
-              await client!.resetStore();
-            }}
-          >
-            logout
-          </button>
-        ) : null}
-      </div>
+      <AppBar position="static">
+        {loading && <LinearProgress />}
+        <Stack
+          direction="row"
+          alignItems="center"
+          sx={{ mx: 4 }}
+          spacing={2}
+          py={2}
+        >
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            News
+          </Typography>
+
+          {data && data.loggedInUser ? (
+            <Typography variant="body1">{data.loggedInUser.email}</Typography>
+          ) : null}
+
+          {data && data.loggedInUser ? (
+            <Button color="inherit" variant="outlined" onClick={handleLogOut}>
+              logout
+            </Button>
+          ) : (
+            <Button color="inherit" variant="outlined">
+              <Link className={styles.btnLink} to="/">
+                login
+              </Link>
+            </Button>
+          )}
+        </Stack>
+      </AppBar>
     </header>
   );
 };

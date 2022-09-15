@@ -28,7 +28,7 @@ export const Register = () => {
             password: values.password,
           },
         });
-        if (response) {
+        if (response.data?.register) {
           navigate('/');
         }
         setSubmitting(false);
