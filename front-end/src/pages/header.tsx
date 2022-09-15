@@ -15,13 +15,11 @@ export const Header: React.FC = () => {
   });
   const [logout, { client }] = useLogoutMutation();
 
-  const handleLogOut = () => {
-    async () => {
-      await logout();
-      localStorage.clear();
-      setAccessToken('');
-      await client!.resetStore();
-    };
+  const handleLogOut = async () => {
+    await logout();
+    localStorage.clear();
+    setAccessToken('');
+    await client!.resetStore();
   };
 
   return (
