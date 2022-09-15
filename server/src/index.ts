@@ -33,6 +33,7 @@ AppDataSource.initialize()
       let payload: any = null;
       try {
         payload = verify(token, process.env.REFRESH_TOKEN_SECRET!);
+        console.log('payload2', payload);
       } catch (err) {
         return res.send({ ok: false, accessToken: '' });
       }
@@ -44,10 +45,6 @@ AppDataSource.initialize()
       if (!user) {
         return res.send({ ok: false, accessToken: '' });
       }
-
-      // if (user.tokenVersion !== payload.tokenVersion) {
-      //   return res.send({ ok: false, accessToken: '' });
-      // }
 
       sendRefreshToken(res, createRefreshToken(user));
 
@@ -61,7 +58,6 @@ AppDataSource.initialize()
         if (error && error.extensions) {
           error.extensions.code = 'GRAPHQL_VALIDATION_FAILED';
         }
-        console.log('error', error);
         return error;
       },
 

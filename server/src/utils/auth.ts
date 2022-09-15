@@ -10,6 +10,6 @@ export const createAccessToken = (user: User) => {
 export const createRefreshToken = (user: User) => {
   return sign({ userId: user.id }, process.env.REFRESH_TOKEN_SECRET!, {
     algorithm: 'HS256',
-    expiresIn: '10h',
+    expiresIn: '10m',
   });
 };
