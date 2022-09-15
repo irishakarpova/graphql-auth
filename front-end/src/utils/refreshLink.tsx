@@ -1,18 +1,21 @@
 import { TokenRefreshLink } from 'apollo-link-token-refresh';
 import { setAccessToken } from '../AccessToken';
 import { isTokenExpired } from './isTokenExpired';
-import { refreshToken } from './refresToken';
 
 export const refreshLink = new TokenRefreshLink({
+  accessTokenField: 'accessToken',
   isTokenValidOrUndefined: () => isTokenExpired(),
-
   fetchAccessToken: () => {
-    return refreshToken();
+    return fetch(process.env.REFRESH_TOKEN!, {
+      method: 'POST',
+      credentials: 'include',
+    });
   },
   handleFetch: (accessToken) => {
     setAccessToken(accessToken);
   },
-  handleError: () => {
-    throw new Error('Your refresh token is invalid. Try to relogin');
+  handleError: (err) => {
+    console.warn('Your refresh token is invalid. Try to relogin');
+    console.error(err);
   },
 });
