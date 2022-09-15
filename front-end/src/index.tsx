@@ -5,15 +5,19 @@ import {
   InMemoryCache,
   ApolloProvider,
   from,
+  ApolloLink,
+  HttpLink,
+  Observable,
 } from '@apollo/client';
 import { AppRoutes } from './AppRoutes';
 import { refreshLink } from './utils/refreshLink';
 import { httpLink } from './utils/httpLink';
-import { authLink } from './utils/authLink';
+import { requestLink } from './utils/authLink';
 import CssBaseline from '@mui/material/CssBaseline';
+import '../styles/main.css';
 
 const client = new ApolloClient({
-  link: from([authLink, refreshLink, httpLink]),
+  link: ApolloLink.from([refreshLink, requestLink, httpLink]),
   cache: new InMemoryCache(),
 });
 
