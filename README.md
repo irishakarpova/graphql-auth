@@ -4,6 +4,11 @@
 
 1. Create a local PostgreSQL Database named "ultratest"
 
+How to create PostgreSQL database?[^2]
+
+- [Install Homebrew](https://brew.sh/)
+  or run the command `brew -v` to make sure Brew installed
+
 2. Move the folder server and make a backend server available:
 
 - Install dependencies by running `npm install` command.
