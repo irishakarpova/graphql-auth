@@ -4,7 +4,7 @@
 
 1. Create a local PostgreSQL Database named "ultratest"
 
-<details><summary><bold>How to create PostgreSQL database?</bold></summary>
+<details><summary><b>How to create PostgreSQL database?</b></summary>
 <p>
 
    Install Homebrew (https://brew.sh/) or run the command in terminal `brew -v` to make sure Brew installed
