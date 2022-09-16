@@ -6,10 +6,7 @@
 
 <details><summary>How to create PostgreSQL database?</summary>
 <p>
-   This site was built using [GitHub Pages](https://pages.github.com/).
-
-   [Install Homebrew] (https://brew.sh/) or run the command `brew -v` to make sure Brew installed
-
+   Install Homebrew (https://brew.sh/) or run the command in terminal `brew -v` to make sure Brew installed
 </p>
 </details>
 
