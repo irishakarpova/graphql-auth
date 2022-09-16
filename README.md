@@ -4,20 +4,12 @@
 
 1. Create a local PostgreSQL Database named "ultratest"
 
-<details><summary>CLICK ME</summary>
+<details><summary>How to create PostgreSQL database?</summary>
 <p>
-
-#### We can hide anything, even code!
-
-```How to create PostgreSQL database?
-
-```
-
-</p>
-</details>
-
 - [Install Homebrew](https://brew.sh/)
   or run the command `brew -v` to make sure Brew installed
+</p>
+</details>
 
 2. Move the folder server and make a backend server available:
 
