@@ -4,14 +4,14 @@
 
 1. Create a local PostgreSQL Database named "ultratest"
 
-<details><summary>CLICK ME</summary>
+<details><summary>How to create PostgreSQL database?</summary>
 <p>
 
 #### We can hide anything, even code!
 
-```ruby
+`ruby
    puts "Hello World"
-```
+`
 
 </p>
 </details>
