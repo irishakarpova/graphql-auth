@@ -7,10 +7,8 @@
 <details><summary>How to create PostgreSQL database?</summary>
 <p>
 
-#### We can hide anything, even code!
-
 `
-   puts "Hello World"
+   [Install Homebrew](https://brew.sh/) or run the command `brew -v` to make sure Brew installed
 `
 
 </p>
