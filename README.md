@@ -6,8 +6,9 @@
 
 <details><summary><em>How to create PostgreSQL database?</em></summary>
 <p>
-
+```
    Install Homebrew (https://brew.sh/) or run the command in terminal `brew -v` to make sure Brew installed
+```
 </p>
 </details>
 
