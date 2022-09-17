@@ -9,9 +9,9 @@
    
   - Install Homebrew (https://brew.sh/) or run the command in terminal `brew -v` to make sure Brew installed.
   - Run the command `brew install postgresql`, thenof it is not started `brew services start`
-  - To create user and password run command `CREATE ROLE <app_user> WITH LOGIN PASSWORD <app_password>`;
-  - To create database use command `CREATE DATEBASE <app_database>`;
-  - To connect to database use commant `\connect <app_database>`;
+  - To create user and password run command `CREATE ROLE <app_user> WITH LOGIN PASSWORD <app_password>;`
+  - To create database use command `CREATE DATEBASE <app_database>;`
+  - To connect to database use commant `\connect <app_database>;`
 
 </p>
 </details>
@@ -20,10 +20,17 @@
 
 - Install dependencies by running `npm install` command.
 - Create .env file with 2 variables:
-  `ACCESS_TOKEN_SECRET=accesssecret`
-  `REFRESH_TOKEN_SECRET=refreshsecret`
+  `ACCESS_TOKEN_SECRET=<accesssecret>`
+  `REFRESH_TOKEN_SECRET=<refreshsecret>`
+- Run `npm run start`
 
-- Run npm run start
+<details><summary><em>The concept of building GraphQL APIs with TypeGraphQL and TypeORM.</em></summary>
+<p>
+   
+The main goal of using the tools is to unify and simplify the work with the database and GraphQL schema with further processing to resolvers in one place. TypeORM library gets data from a database and maps tables to model classes, TypeGraphQL generates a GraphQL schema into classes with Typescript and allows us toprocess resolvers in one place.
+
+</p>
+</details>
 
 3. To run the front-end move the directory react-webpack
 
