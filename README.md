@@ -32,8 +32,13 @@ The main goal of using the tools is to unify and simplify the work with the data
 Here, we are installing:
 
 - TypeORM library using CLI
- - install global version `npm i -g typeorm`
- - initialize a new TypeORM project `init --name <folder_name> --database postgres`
+  - install global version `npm i -g typeorm`
+  - initialize a new TypeORM project `init --name <folder_name> --database postgres`
+   
+100. First list item
+     - First nested list item
+       - Second nested list item   
+   
 
 </p>
 </details>
