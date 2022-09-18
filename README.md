@@ -31,10 +31,9 @@ The main goal of using the tools is to unify and simplify the work with the data
 
 Here, we are installing:
 
-1. TypeORM library using CLI
-
-- install global version `npm i -g typeorm`
-- initialize a new TypeORM project `init --name <folder_name> --database postgres`
+- TypeORM library using CLI
+ - install global version `npm i -g typeorm`
+ - initialize a new TypeORM project `init --name <folder_name> --database postgres`
 
 </p>
 </details>
