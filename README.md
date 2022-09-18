@@ -29,10 +29,17 @@
    
 The main goal of using the tools is to unify and simplify the work with the database and GraphQL schema with further processing to resolvers in one place. TypeORM library gets data from a database and maps tables to model classes, TypeGraphQL generates a GraphQL schema into classes with Typescript and allows us toprocess resolvers in one place.
 
+Here, we are installing:
+
+1. TypeORM library using CLI
+
+- install global version `npm i -g typeorm`
+- initialize a new TypeORM project `init --name <folder_name> --database postgres`
+
 </p>
 </details>
 
-3. To run the front-end move the directory react-webpack
+3. To run the front-end move to the directory react-webpack
 
 - Install dependencies by running npm install command.
 - Create .env file with 2 variables:
