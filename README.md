@@ -29,7 +29,7 @@
    
 The main goal of using the tools is to unify and simplify the work with the database and GraphQL schema with further processing to resolvers in one place. TypeORM library gets data from a database and maps tables to model classes, TypeGraphQL generates a GraphQL schema into classes with Typescript and allows us toprocess resolvers in one place.
 
-Here, we are installing:
+Here, we are setting up:
 
 - TypeORM library using CLI
   - install global version `npm i -g typeorm`
@@ -37,6 +37,9 @@ Here, we are installing:
 - The GraphQL server
   - install `npm i -g express apollo-server-express graphql` and `npm i -D --save @types/express`
     Here, we use the express framework as a web server and the apollo-server-express package as a middleware to connect GraphQl.
+- Create database table structure through TypeORM model.
+  The model represents a database table whose rows are mapped to Entity class.
+- Describe the resolver class by TypeGraphQL and define queries and mutations.
 
 </p>
 </details>
