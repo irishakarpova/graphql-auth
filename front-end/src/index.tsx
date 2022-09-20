@@ -4,10 +4,7 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-  from,
   ApolloLink,
-  HttpLink,
-  Observable,
 } from '@apollo/client';
 import { AppRoutes } from './AppRoutes';
 import { refreshLink } from './utils/refreshLink';
