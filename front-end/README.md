@@ -1,8 +1,6 @@
 # Setting Up React App with Apollo Client and GraphQL Code Generator.
 
-Fetching Data from GraphQL APIs with Apollo Client
-
-I would divide the development into 4 steps in the front-end part of the project:
+The front-end development process with Apollo Client and React can be divided into 4 steps:
 
 - Set Up Webpack development server;
 
