@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRegisterMutation } from '../generated/graphql';
 import { useNavigate } from 'react-router-dom';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, FormikHelpers } from 'formik';
 import { TextField } from 'formik-mui';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -9,6 +9,7 @@ import { validationSchema } from './utility/verification';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
+import { FormValues } from './utility/interfaces';
 
 export const Register = () => {
   const [register, { error }] = useRegisterMutation();
@@ -17,22 +18,27 @@ export const Register = () => {
   }
   let navigate = useNavigate();
 
+  const handleSubmit = async (
+    values: FormValues,
+    { setSubmitting }: FormikHelpers<FormValues>
+  ) => {
+    const response = await register({
+      variables: {
+        email: values.email,
+        password: values.password,
+      },
+    });
+    if (response.data?.register) {
+      navigate('/');
+    }
+    setSubmitting(false);
+  };
+
   return (
     <Formik
       initialValues={{ email: '', password: '' }}
       validationSchema={validationSchema}
-      onSubmit={async (values, { setSubmitting }) => {
-        const response = await register({
-          variables: {
-            email: values.email,
-            password: values.password,
-          },
-        });
-        if (response.data?.register) {
-          navigate('/');
-        }
-        setSubmitting(false);
-      }}
+      onSubmit={handleSubmit}
     >
       {({ isSubmitting }) => (
         <Form>
