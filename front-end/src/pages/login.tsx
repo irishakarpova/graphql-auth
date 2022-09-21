@@ -6,18 +6,47 @@ import {
 } from '../generated/graphql';
 import { useNavigate } from 'react-router-dom';
 import { setAccessToken } from '../AccessToken';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, FormikHelpers } from 'formik';
 import Button from '@mui/material/Button';
 import { TextField } from 'formik-mui';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
+import { FormValues } from './utility/interfaces';
 
 export const Login = () => {
   const [login] = useLoginMutation();
 
   let navigate = useNavigate();
+  const handleSubmit = async (
+    values: FormValues,
+    { setSubmitting }: FormikHelpers<FormValues>
+  ) => {
+    const response = await login({
+      variables: {
+        email: values.email,
+        password: values.password,
+      },
+
+      update: (store, { data }) => {
+        if (data) {
+          store.writeQuery<LoggedInUserQuery>({
+            query: LoggedInUserDocument,
+            data: {
+              loggedInUser: data.login.user,
+            },
+          });
+        }
+      },
+    });
+
+    if (response && response.data) {
+      setAccessToken(response.data.login.accessToken);
+    }
+    navigate('/home');
+    setSubmitting(false);
+  };
 
   return (
     <Container maxWidth="sm">
@@ -27,31 +56,7 @@ export const Login = () => {
 
       <Formik
         initialValues={{ email: '', password: '' }}
-        onSubmit={async (values, { setSubmitting }) => {
-          const response = await login({
-            variables: {
-              email: values.email,
-              password: values.password,
-            },
-
-            update: (store, { data }) => {
-              if (data) {
-                store.writeQuery<LoggedInUserQuery>({
-                  query: LoggedInUserDocument,
-                  data: {
-                    me: data.login.user,
-                  },
-                });
-              }
-            },
-          });
-
-          if (response && response.data) {
-            setAccessToken(response.data.login.accessToken);
-          }
-          navigate('/home');
-          setSubmitting(false);
-        }}
+        onSubmit={handleSubmit}
       >
         {({ isSubmitting }) => (
           <Form>
