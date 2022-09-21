@@ -6,7 +6,6 @@
     "importHelpers": true,
     "declaration": true,
     "rootDir": "src",
-    // "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noImplicitAny": true,
