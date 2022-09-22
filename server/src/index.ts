@@ -33,7 +33,6 @@ AppDataSource.initialize()
       let payload: any = null;
       try {
         payload = verify(token, process.env.REFRESH_TOKEN_SECRET!);
-        console.log('payload2', payload);
       } catch (err) {
         return res.send({ ok: false, accessToken: '' });
       }

@@ -99,7 +99,7 @@ export class UserResolver {
     @Arg('email', { validate: true }) email: string,
     @Arg('password') password: string
   ) {
-    const hashedPassword = await hash(password, 12);
+    const hashedPassword = await hash(password, 10);
     const validatedArgs = await isValid(email, password);
 
     if (validatedArgs) {
